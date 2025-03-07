@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohd Noman Qadri - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">AL Qadri's Portfolio</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work-experience">Work Experience</a></li>
+            <li><a href="#contact">Contact Me</a></li>
+        </ul>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Hi, My name is <span class="highlight">Mohd Noman Qadri</span></h1>
+            <p>I am a <span class="typing"></span></p>
+            <div class="buttons">
+                <button class="btn primary-btn" id="downloadResume">Download Resume</button>
+                <button class="btn secondary-btn" id="visitGithub">Visit GitHub</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="/assets/n1.png" alt="Developer">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>
+            I am <strong>Mohd Noman Qadri</strong>, a passionate <strong>Full Stack Developer</strong> specializing in the <strong>MERN stack</strong>. I have experience working on various projects including <strong> E-Commerce, LMS, Car Rental, and Chat Applications</strong>.
+        </p>
+    </section>
+
+    <!-- Work Experience -->
+
+    <section id="work-experience" class="work-experience">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <i class="fab fa-node-js"></i>
+                <h3>Node.js Developer</h3>
+                <p>Backend API Development</p>
+            </div>
+            <div class="timeline-item">
+                <i class="fab fa-react"></i>
+                <h3>React Developer</h3>
+                <p>UI/UX Development</p>
+            </div>
+            <div class="timeline-item">
+                <i class="fas fa-code"></i>
+                <h3>Software Developer</h3>
+                <p>Performance Optimization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Your Email" required>
+            <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn primary-btn">Send Message</button>
+        </form>
+        <p>Email: <a href="mailto:nomanqadri34@gmail.com">nomanqadri34@gmailcom</a> | Phone: +918957582590</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Mohd Noman Qadri - Developer Portfolio</p>
+        <div class="social-links">
+            <a href="https://github.com/nomanqadri34" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mohd-noman-qadri-6937721b6/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/nomanqadri34" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            let nav = document.getElementById("navLinks");
+            nav.style.display = (nav.style.display === "flex") ? "none" : "flex";
+        }
+
+        // Typed.js Animation
+        new Typed(".typing", {
+            strings: ["Full Stack Developer", "MERN Stack Expert", "Software Engineer"],
+            typeSpeed: 100,
+            backSpeed: 60,
+            loop: true
+        });
+
+        // Resume Download
+        document.getElementById("downloadResume").addEventListener("click", function() {
+            window.location.href = "/assets/cv1.pdf";
+        });
+
+        // GitHub Navigation
+        document.getElementById("visitGithub").addEventListener("click", function() {
+            window.open("https://github.com/nomanqadri34", "_blank");
+        });
+
+        // EmailJS Integration
+        (function() {
+            emailjs.init("zYu6Ds-u7yBpEi8--");
+        })();
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_yyytigk", "template_fd4w20d", this)
+                .then(function() {
+                    alert("Message Sent Successfully!");
+                    document.getElementById("contactForm").reset();
+                }, function(error) {
+                    alert("Failed to send message, please try again.");
+                });
+        });
+    </script>
+</body>
+</html>
+
+
+
